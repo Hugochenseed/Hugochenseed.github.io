@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FreeRTOS_Task的系统信息 | Hguo Blog</title><meta name="author" content="Hugo Chen"><meta name="copyright" content="Hugo Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FreeRTOS_Task的系统信息打印系统信息先配置好SDK信息   1234567891011121314void app_main(void)&#123;    TaskHandle_t pxTask1;    xTaskCreate(myTask1, &quot;myTask1&quot;, 1024, NULL, 1, &amp;pxTask1);    xTaskCreate(myTa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FreeRTOS_Task的系统信息">
+<meta property="og:url" content="http://example.com/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/index.html">
+<meta property="og:site_name" content="Hguo Blog">
+<meta property="og:description" content="FreeRTOS_Task的系统信息打印系统信息先配置好SDK信息   1234567891011121314void app_main(void)&#123;    TaskHandle_t pxTask1;    xTaskCreate(myTask1, &quot;myTask1&quot;, 1024, NULL, 1, &amp;pxTask1);    xTaskCreate(myTa">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp">
+<meta property="article:published_time" content="2023-01-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-31T02:14:51.000Z">
+<meta property="article:author" content="Hugo Chen">
+<meta property="article:tag" content="FreeRTOS">
+<meta property="article:tag" content="ESP32">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "FreeRTOS_Task的系统信息",
+  "url": "http://example.com/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/",
+  "image": "https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp",
+  "datePublished": "2023-01-27T16:00:00.000Z",
+  "dateModified": "2023-01-31T02:14:51.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Hugo Chen",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FreeRTOS_Task的系统信息',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/constown/HexoCustomFile@0.0.4/dist/css/custom.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://github.com/Hugochenseed/picx-images-hosting/raw/master/Cartoon_img/蜡笔.1e8wy1agh5.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/20250802/_-(1).6iklmxlexg.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hguo Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">FreeRTOS_Task的系统信息</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">FreeRTOS_Task的系统信息</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-27T16:00:00.000Z" title="发表于 2023-01-28 00:00:00">2023-01-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-31T02:14:51.000Z" title="更新于 2023-01-31 10:14:51">2023-01-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FreeRTOS/">FreeRTOS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">92</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="FreeRTOS-Task的系统信息"><a href="#FreeRTOS-Task的系统信息" class="headerlink" title="FreeRTOS_Task的系统信息"></a>FreeRTOS_Task的系统信息</h1><h2 id="打印系统信息"><a href="#打印系统信息" class="headerlink" title="打印系统信息"></a>打印系统信息</h2><p>先配置好SDK信息</p>
+<img src="https://raw.githubusercontent.com/chenborong/image/master/img/ESP32/FreeRTOS/FreeRTOS_Task的系统信息/图1.jpg" style="zoom: 200%;" />
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">app_main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    TaskHandle_t pxTask1;</span><br><span class="line">    xTaskCreate(myTask1, <span class="string">&quot;myTask1&quot;</span>, <span class="number">1024</span>, <span class="literal">NULL</span>, <span class="number">1</span>, &amp;pxTask1);</span><br><span class="line">    xTaskCreate(myTask2, <span class="string">&quot;myTask2&quot;</span>, <span class="number">1024</span>, <span class="literal">NULL</span>, <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="type">static</span> <span class="type">char</span> pcWriteBuffer[<span class="number">512</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    vTaskList(pcWriteBuffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;-------------------------------------------------------------\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;-------------------------------------------------------------\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Name        State       Priority        Stack       Num\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;函数名称      状态       	优先级        	  堆栈       Num\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n	&quot;</span>,pcWriteBuffer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/FreeRTOS/">FreeRTOS</a><a class="post-meta__tags" href="/tags/ESP32/">ESP32</a></div><div class="post-share"><div class="social-share" data-image="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0/" title="FreeRTOS_Task的输入参数"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">FreeRTOS_Task的输入参数</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的输入参数传入一个变量12345678910111213141516171819#include “FreeRTOS.h”#include “task.h” void myTask(void *pvParam)&#123;    int *pInt;    pInt = (int *pvParam);    printf(&quot;I got testNum = %d\n&quot;,*pInt);	//将指针的内容打印出来        vTaskDelay(1000/portTICK_PERIOD_MS);    vTaskDelete(NULL);&#125;int testNum = 5;void app_main(void)&#123;    xTaskCreate(myTask,&quot;myTask1&quot;,1024,(void *)&amp;testNum,1,NULL);	//将变量testNum的地址传入进去&#125;  传入一个数组123456789101112131415161718192021222324252627...</div></div></div></a><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%A0%E9%99%A4/" title="FreeRTOS_创建Task"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">FreeRTOS_创建Task</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的创建与删除Task的介绍123456789101112131415#include “FreeRTOS.h”#include “task.h”BaseType_t xTaskCreate( TaskFunction_t pvTaskCode,                        const char * const pcName,                        unsigned short usStackDepth,                        void *pvParameters,                        UBaseType_t uxPriority,                        TaskHandle_t *pxCreatedTask ); pvTaskCode :    一个空指针,例子：void *pvParam pcName        :    Task名称 usStackDepth:    分配内存 *pvParameters: uxPriority   ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%8C%82%E8%B5%B7/" title="FreeRTOS_Task的任务挂起,恢复,任务调度"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-28</div><div class="info-item-2">FreeRTOS_Task的任务挂起,恢复,任务调度</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的任务挂起,恢复,任务调度在main函数挂起任务123456789101112131415161718192021222324252627void myTask1(void *pvParam)&#123;    while(1)    &#123;        printf(&quot;task1-111\n&quot;);        vTaskDelay(1000 / portTICK_PERIOD_MS);    &#125;&#125;void myTask2(void *pvParam)&#123;    while(1)    &#123;        printf(&quot;task2-222\n&quot;);        vTaskDelay(1000 / portTICK_PERIOD_MS);    &#125;&#125;void app_main(void)&#123;    TaskHandle_t pxTask1;    xTaskCreate(myTask1, &quot;myTask1&quot;, 1024,...</div></div></div></a><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/" title="FreeRTOS_Task的优先级"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-28</div><div class="info-item-2">FreeRTOS_Task的优先级</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的优先级获取优先级123456789101112static const char *pcTxt = &quot;I am Rainjai&quot;;void app_main(void)&#123;    //---------------------------------------    UBaseType_t iPriority = 0;		//typedef unsigned int      UBaseType_t;    TaskHandle_t pxTask = NULL;    xTaskCreate(myTask, &quot;myTask1&quot;, 1024, (void *)&amp;pcTxt, 1, &amp;pxTask);    iPriority = uxTaskPriorityGet(pxTask);  //取得当前该句柄的优先级    printf(&quot;iPriority = %d\n&quot;,iPriority);   //并且打印出来&#125;  优先级123456789101112131...</div></div></div></a><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E5%A0%86%E6%A0%88/" title="FreeRTOS_Task的堆栈"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-28</div><div class="info-item-2">FreeRTOS_Task的堆栈</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的堆栈uxTaskGetStackHighWaterMark()  函数1234567891011121314151617181920212223void myTask1(void *pvParam)&#123;    while(1)    &#123;        printf(&quot;task1-111\n&quot;);        vTaskDelay(1000 / portTICK_PERIOD_MS);    &#125;&#125;void app_main(void)&#123;    TaskHandle_t pxTask1;    UBaseType_t iStack;        //定义变量表示剩余堆栈    xTaskCreate(myTask1, &quot;myTask1&quot;, 1024, NULL, 1, &amp;pxTask1);    while (1)    &#123;       iStack = uxTaskGetStackHighWaterMark(pxTask1);    //iSta...</div></div></div></a><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%A0%E9%99%A4/" title="FreeRTOS_创建Task"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-28</div><div class="info-item-2">FreeRTOS_创建Task</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的创建与删除Task的介绍123456789101112131415#include “FreeRTOS.h”#include “task.h”BaseType_t xTaskCreate( TaskFunction_t pvTaskCode,                        const char * const pcName,                        unsigned short usStackDepth,                        void *pvParameters,                        UBaseType_t uxPriority,                        TaskHandle_t *pxCreatedTask ); pvTaskCode :    一个空指针,例子：void *pvParam pcName        :    Task名称 usStackDepth:    分配内存 *pvParameters: uxPriority   ...</div></div></div></a><a class="pagination-related" href="/2023/01/28/Hugo%20Blog/FreeRTOS/FreeRTOS_Task%E7%9A%84%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0/" title="FreeRTOS_Task的输入参数"><img class="cover" src="https://github.com/Hugochenseed/picx-images-hosting/raw/master/404_img/404_1.3yerag20cy.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-28</div><div class="info-item-2">FreeRTOS_Task的输入参数</div></div><div class="info-2"><div class="info-item-1">FreeRTOS_Task的输入参数传入一个变量12345678910111213141516171819#include “FreeRTOS.h”#include “task.h” void myTask(void *pvParam)&#123;    int *pInt;    pInt = (int *pvParam);    printf(&quot;I got testNum = %d\n&quot;,*pInt);	//将指针的内容打印出来        vTaskDelay(1000/portTICK_PERIOD_MS);    vTaskDelete(NULL);&#125;int testNum = 5;void app_main(void)&#123;    xTaskCreate(myTask,&quot;myTask1&quot;,1024,(void *)&amp;testNum,1,NULL);	//将变量testNum的地址传入进去&#125;  传入一个数组123456789101112131415161718192021222324252627...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FreeRTOS-Task%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">FreeRTOS_Task的系统信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">打印系统信息</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Hugo Chen</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
